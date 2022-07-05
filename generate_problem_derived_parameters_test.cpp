@@ -16,3 +16,7 @@ TEST(GenerateProblemDerivedParametersTest, GetSubchannelBandwidthTest) {
 TEST(GenerateProblemDerivedParametersTest, GetTimeSlotDurationTest) {
   EXPECT_NEAR(GetTimeSlotDuration(2), 2.5 * 1E-4, DELTA);
 }
+
+TEST(GenerateProblemDerivedParametersTest, GetTimeMinislotDurationTest) {
+  EXPECT_NEAR(GetTimeMinislotDuration(2.5 * 1E-4, 7), 1E-3 / 28.0, DELTA);
+}

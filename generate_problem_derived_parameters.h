@@ -11,3 +11,7 @@ int GetSubchannelBandwidth(const int subcarrierSpacing) {
 double GetTimeSlotDuration(const int numerology) {
   return pow(2.0, -(double)numerology) * 1E-3;
 }
+
+double GetTimeMinislotDuration(const double timeSlotDuration, const int timeMinislotsNum) {
+  return timeSlotDuration / (double)timeMinislotsNum;
+}
