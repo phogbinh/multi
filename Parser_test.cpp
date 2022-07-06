@@ -6,4 +6,15 @@ TEST(ParserTest, GetParametersTest) {
   Parameters parameters;
   parser.GetParameters(parameters);
   EXPECT_EQ(parameters.BASE_FREQUENCY, 28);
+  EXPECT_EQ(parameters.TIME_SLOTS_NUM, 200);
+  EXPECT_EQ(parameters.TIME_MINISLOTS_NUM, 7);
+  EXPECT_EQ(parameters.BASE_STATIONS_NUM, 3);
+  EXPECT_EQ(parameters.EMBB_USERS_NUM, 100);
+  EXPECT_EQ(parameters.URLLC_USERS_NUM, 10);
+  EXPECT_EQ(parameters.MAXIMUM_URLLC_DEMAND_RATE, 4000);
+  EXPECT_EQ(parameters.CHANNEL_BANDWIDTH, 40000000);
+  EXPECT_EQ(parameters.NUMEROLOGY, 2);
+  EXPECT_EQ(parameters.SUBCHANNELS_NUM, 51);
+  EXPECT_EQ(parameters.TRANSMISSION_POWER, 20);
+  EXPECT_EQ(parameters.THERMAL_NOISE_DENSITY, -204);
 }
