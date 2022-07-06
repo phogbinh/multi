@@ -22,7 +22,7 @@ public:
   // output @ parameters
   void GetParameters(Parameters& parameters) {
     ifstream file;
-    file.open("../problem_parameters.txt"); // path relative to build folder
+    file.open(getenv("PROBLEM_PARAMETERS"));
     string line;
     while (getline(file, line)) {
       size_t startIdx = line.find_first_of("=") + 1;
