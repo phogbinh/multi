@@ -24,6 +24,15 @@ target_link_libraries(
   Parser_test
   gtest_main
 )
+add_executable(
+  Vector3Int_test
+  Vector3Int_test.cpp
+)
+target_link_libraries(
+  Vector3Int_test
+  gtest_main
+)
 include(GoogleTest)
 gtest_discover_tests(generate_problem_derived_parameters_test)
 gtest_discover_tests(Parser_test)
+gtest_discover_tests(Vector3Int_test)
