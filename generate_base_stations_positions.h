@@ -9,7 +9,7 @@ void GetBaseStationsPositions(vector<Vector3Int>& positions) {
   Parameters parameters;
   parser.GetParameters(parameters);
   ifstream file;
-  file.open("./../base_stations_2d_positions.txt");
+  file.open(string(getenv("MULTI_DIR")).append("base_stations_2d_positions.txt"));
   positions.resize(parameters.BASE_STATIONS_NUM);
   for (int i = 0; i < parameters.BASE_STATIONS_NUM; ++i) {
     int x;

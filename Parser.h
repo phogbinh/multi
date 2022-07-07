@@ -28,7 +28,7 @@ public:
   // output @ parameters
   void GetParameters(Parameters& parameters) {
     ifstream file;
-    file.open(getenv("PROBLEM_PARAMETERS"));
+    file.open(string(getenv("MULTI_DIR")).append("problem_parameters.txt"));
     string line;
     while (getline(file, line)) {
       size_t startIdx = line.find_first_of("=") + 1;
