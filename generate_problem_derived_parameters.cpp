@@ -14,6 +14,6 @@ int main() {
   printf("SUBCHANNEL_BANDWIDTH=%d Hz\n", GetSubchannelBandwidth(subcarrierSpacing));
   double timeSlotDuration = GetTimeSlotDuration(parameters.NUMEROLOGY);
   printf("TIME_SLOT_DURATION=%f s\n", timeSlotDuration);
-  printf("TIME_MINISLOT_DURATION=%f s", GetTimeMinislotDuration(timeSlotDuration, parameters.TIME_MINISLOTS_NUM));
+  printf("TIME_MINISLOT_DURATION=%f s\n", GetTimeMinislotDuration(timeSlotDuration, parameters.TIME_MINISLOTS_NUM));
   return 0;
 }
