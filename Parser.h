@@ -19,6 +19,7 @@ struct Parameters {
   int MAXIMUM_X;
   int MINIMUM_Y;
   int MAXIMUM_Y;
+  int BASE_STATION_Z;
   int USER_Z;
 };
 
@@ -92,6 +93,9 @@ private:
     }
     else if (key == "MAXIMUM_Y") {
       parameters.MAXIMUM_Y = value;
+    }
+    else if (key == "BASE_STATION_Z") {
+      parameters.BASE_STATION_Z = value;
     }
     else if (key == "USER_Z") {
       parameters.USER_Z = value;
