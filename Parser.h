@@ -15,6 +15,11 @@ struct Parameters {
   int SUBCHANNELS_NUM;
   int TRANSMISSION_POWER;
   int THERMAL_NOISE_DENSITY;
+  int MINIMUM_X;
+  int MAXIMUM_X;
+  int MINIMUM_Y;
+  int MAXIMUM_Y;
+  int USER_Z;
 };
 
 class Parser {
@@ -75,6 +80,21 @@ private:
     }
     else if (key == "THERMAL_NOISE_DENSITY") {
       parameters.THERMAL_NOISE_DENSITY = value;
+    }
+    else if (key == "MINIMUM_X") {
+      parameters.MINIMUM_X = value;
+    }
+    else if (key == "MAXIMUM_X") {
+      parameters.MAXIMUM_X = value;
+    }
+    else if (key == "MINIMUM_Y") {
+      parameters.MINIMUM_Y = value;
+    }
+    else if (key == "MAXIMUM_Y") {
+      parameters.MAXIMUM_Y = value;
+    }
+    else if (key == "USER_Z") {
+      parameters.USER_Z = value;
     }
     else {
       // TODO throw exception
