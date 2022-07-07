@@ -37,3 +37,4 @@ build
 *.swp
 
 problem_derived_parameters.txt
+base_stations_positions.txt
