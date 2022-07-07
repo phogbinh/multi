@@ -5,3 +5,4 @@ cmake --build ./build
 cd ./build
 ./generate_problem_derived_parameters_test
 ./Parser_test
+./Vector3Int_test
