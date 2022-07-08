@@ -4,6 +4,7 @@
 
 using namespace std;
 
+// output @ positions
 void GetBaseStationsPositions(vector<Vector3Int>& positions) {
   Parser parser;
   Parameters parameters;
