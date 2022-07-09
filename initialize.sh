@@ -7,3 +7,4 @@ cat ./base_stations_positions.txt
 rm -r ./users_positions && mkdir ./users_positions
 g++ generate_users_begin_end_positions.cpp -o ./bin/generate_users_begin_end_positions && ./bin/generate_users_begin_end_positions
 ls ./users_positions
+$MATLAB_DIR/matlab -batch "run ./ml/generate_users_positions.m"
