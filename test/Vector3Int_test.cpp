@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "Vector3Int.h"
+#include "../Vector3Int.h"
 
 TEST(Vector3IntTest, ConstructorTest) {
   Vector3Int vector(2, 1, 3);

@@ -1,4 +1,4 @@
-addpath(genpath("ml"));
+addpath(genpath("../ml"));
 
 POINTS_NUM = 11;
 

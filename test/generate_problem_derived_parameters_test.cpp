@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "generate_problem_derived_parameters.h"
+#include "../generate_problem_derived_parameters.h"
 
 #define DELTA 0.00001
 

@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
-#include "Parser.h"
+#include "../Parser.h"
 #include <bits/stdc++.h>
-#include "Vector3Int.h"
-#include "UsersBeginEndPositionsGenerator.h"
+#include "../Vector3Int.h"
+#include "../UsersBeginEndPositionsGenerator.h"
 
 class UsersBeginEndPositionsGeneratorTest : public ::testing::Test {
 protected:

@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "Vector3Int.h"
-#include "generate_base_stations_positions.h"
+#include "../Vector3Int.h"
+#include "../generate_base_stations_positions.h"
 
 TEST(GenerateBaseStationsPositionsTest, GetBaseStationsPositionsTest) {
   vector<Vector3Int> positions;
