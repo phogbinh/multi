@@ -23,3 +23,9 @@ double GetTimeSlotDuration(const int numerology) {
 double GetTimeMinislotDuration(const double timeSlotDuration, const int timeMinislotsNum) {
   return timeSlotDuration / (double)timeMinislotsNum;
 }
+
+// input @ baseFrequency[GHz], subchannelIdx, subchannelBandwidth[Hz]
+// output @ [GHz]
+double GetSubchannelFrequency(const int baseFrequency, const size_t subchannelIdx, const int subchannelBandwidth) {
+  return (double)baseFrequency + (double)subchannelIdx * 1E-9 * (double)subchannelBandwidth;
+}

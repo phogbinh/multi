@@ -20,3 +20,8 @@ TEST(GenerateProblemDerivedParametersTest, GetTimeSlotDurationTest) {
 TEST(GenerateProblemDerivedParametersTest, GetTimeMinislotDurationTest) {
   EXPECT_NEAR(GetTimeMinislotDuration(2.5 * 1E-4, 7), 1E-3 / 28.0, DELTA);
 }
+
+TEST(GenerateProblemDerivedParametersTest, GetSubchannelFrequencyTest) {
+  EXPECT_NEAR(GetSubchannelFrequency(28, 0, 720000), 28.0, DELTA);
+  EXPECT_NEAR(GetSubchannelFrequency(28, 50, 720000), 28.036, DELTA);
+}
