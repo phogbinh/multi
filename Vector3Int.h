@@ -1,3 +1,5 @@
+#include <cmath>
+
 #ifndef VECTOR_3_INT_H
 #define VECTOR_3_INT_H
 class Vector3Int {
@@ -27,6 +29,12 @@ public:
   }
   const int GetZ() const {
     return _z;
+  }
+  double GetDistanceTo(const Vector3Int& vector) {
+    double x = (double)vector._x - (double)_x;
+    double y = (double)vector._y - (double)_y;
+    double z = (double)vector._z - (double)_z;
+    return sqrt(x * x + y * y + z * z);
   }
 private:
   int _x = 0;
