@@ -8,7 +8,7 @@ TEST(UsersBeginEndPositionsGeneratorTest, GetEmbbUsersBeginPositionsTest) {
   Parser parser;
   Parameters parameters;
   parser.GetParameters(parameters);
-  UsersPositionsGenerator generator(parameters.EMBB_USERS_NUM, parameters.URLLC_USERS_NUM, parameters.MINIMUM_X, parameters.MAXIMUM_X, parameters.MINIMUM_Y, parameters.MAXIMUM_Y, parameters.USER_Z);
+  UsersBeginEndPositionsGenerator generator(parameters.EMBB_USERS_NUM, parameters.URLLC_USERS_NUM, parameters.MINIMUM_X, parameters.MAXIMUM_X, parameters.MINIMUM_Y, parameters.MAXIMUM_Y, parameters.USER_Z);
   vector<Vector3Int> positions;
   generator.GetEmbbUsersBeginPositions(positions);
   EXPECT_EQ(positions.size(), 100);
@@ -25,7 +25,7 @@ TEST(UsersBeginEndPositionsGeneratorTest, GetEmbbUsersEndPositionsTest) {
   Parser parser;
   Parameters parameters;
   parser.GetParameters(parameters);
-  UsersPositionsGenerator generator(parameters.EMBB_USERS_NUM, parameters.URLLC_USERS_NUM, parameters.MINIMUM_X, parameters.MAXIMUM_X, parameters.MINIMUM_Y, parameters.MAXIMUM_Y, parameters.USER_Z);
+  UsersBeginEndPositionsGenerator generator(parameters.EMBB_USERS_NUM, parameters.URLLC_USERS_NUM, parameters.MINIMUM_X, parameters.MAXIMUM_X, parameters.MINIMUM_Y, parameters.MAXIMUM_Y, parameters.USER_Z);
   vector<Vector3Int> positions;
   generator.GetEmbbUsersEndPositions(positions);
   EXPECT_EQ(positions.size(), 100);
@@ -42,7 +42,7 @@ TEST(UsersBeginEndPositionsGeneratorTest, GetUrllcUsersBeginPositionsTest) {
   Parser parser;
   Parameters parameters;
   parser.GetParameters(parameters);
-  UsersPositionsGenerator generator(parameters.EMBB_USERS_NUM, parameters.URLLC_USERS_NUM, parameters.MINIMUM_X, parameters.MAXIMUM_X, parameters.MINIMUM_Y, parameters.MAXIMUM_Y, parameters.USER_Z);
+  UsersBeginEndPositionsGenerator generator(parameters.EMBB_USERS_NUM, parameters.URLLC_USERS_NUM, parameters.MINIMUM_X, parameters.MAXIMUM_X, parameters.MINIMUM_Y, parameters.MAXIMUM_Y, parameters.USER_Z);
   vector<Vector3Int> positions;
   generator.GetUrllcUsersBeginPositions(positions);
   EXPECT_EQ(positions.size(), 10);
@@ -59,7 +59,7 @@ TEST(UsersBeginEndPositionsGeneratorTest, GetUrllcUsersEndPositionsTest) {
   Parser parser;
   Parameters parameters;
   parser.GetParameters(parameters);
-  UsersPositionsGenerator generator(parameters.EMBB_USERS_NUM, parameters.URLLC_USERS_NUM, parameters.MINIMUM_X, parameters.MAXIMUM_X, parameters.MINIMUM_Y, parameters.MAXIMUM_Y, parameters.USER_Z);
+  UsersBeginEndPositionsGenerator generator(parameters.EMBB_USERS_NUM, parameters.URLLC_USERS_NUM, parameters.MINIMUM_X, parameters.MAXIMUM_X, parameters.MINIMUM_Y, parameters.MAXIMUM_Y, parameters.USER_Z);
   vector<Vector3Int> positions;
   generator.GetUrllcUsersEndPositions(positions);
   EXPECT_EQ(positions.size(), 10);

@@ -2,11 +2,11 @@
 
 #define SEED_X 1
 #define SEED_Y 2
-class UsersPositionsGenerator {
+class UsersBeginEndPositionsGenerator {
 public:
   // input @ embbUsersNum, urllcUsersNum, minX, maxX, minY, maxY, z
   // output @ _embbUsersBeginPositions, _embbUsersEndPositions, _urllcUsersBeginPositions, _urllcUsersEndPositions
-  UsersPositionsGenerator(const int embbUsersNum, const int urllcUsersNum, const int minX, const int maxX, const int minY, const int maxY, const int z) {
+  UsersBeginEndPositionsGenerator(const int embbUsersNum, const int urllcUsersNum, const int minX, const int maxX, const int minY, const int maxY, const int z) {
     default_random_engine engineX(SEED_X);
     default_random_engine engineY(SEED_Y);
     uniform_int_distribution<int> uniformX(minX, maxX);
