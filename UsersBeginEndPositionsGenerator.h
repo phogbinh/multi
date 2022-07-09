@@ -1,7 +1,7 @@
 #include "Vector3Int.h"
 
 #define SEED_X 1
-#define SEED_Y 2
+#define SEED_Y 50000
 class UsersBeginEndPositionsGenerator {
 public:
   // input @ embbUsersNum, urllcUsersNum, minX, maxX, minY, maxY, z
