@@ -20,9 +20,9 @@ int main() {
     }
     file.close();
   };
-  generate_users_positions("./users_positions/embb-0.txt", bind(&UsersBeginEndPositionsGenerator::GetEmbbUsersBeginPositions, generator, placeholders::_1));
-  generate_users_positions("./users_positions/embb-" + to_string(parameters.TIME_SLOTS_NUM - 1) + ".txt", bind(&UsersBeginEndPositionsGenerator::GetEmbbUsersEndPositions, generator, placeholders::_1));
-  generate_users_positions("./users_positions/urllc-0-0.txt", bind(&UsersBeginEndPositionsGenerator::GetUrllcUsersBeginPositions, generator, placeholders::_1));
-  generate_users_positions("./users_positions/urllc-" + to_string(parameters.TIME_SLOTS_NUM - 1) + "-" + to_string(parameters.TIME_MINISLOTS_NUM - 1) + ".txt", bind(&UsersBeginEndPositionsGenerator::GetUrllcUsersEndPositions, generator, placeholders::_1));
+  generate_users_positions(string(getenv("MULTI_DIR")).append("users_positions/embb-0.txt"), bind(&UsersBeginEndPositionsGenerator::GetEmbbUsersBeginPositions, generator, placeholders::_1));
+  generate_users_positions(string(getenv("MULTI_DIR")).append("users_positions/embb-" + to_string(parameters.TIME_SLOTS_NUM - 1) + ".txt"), bind(&UsersBeginEndPositionsGenerator::GetEmbbUsersEndPositions, generator, placeholders::_1));
+  generate_users_positions(string(getenv("MULTI_DIR")).append("users_positions/urllc-0-0.txt"), bind(&UsersBeginEndPositionsGenerator::GetUrllcUsersBeginPositions, generator, placeholders::_1));
+  generate_users_positions(string(getenv("MULTI_DIR")).append("users_positions/urllc-" + to_string(parameters.TIME_SLOTS_NUM - 1) + "-" + to_string(parameters.TIME_MINISLOTS_NUM - 1) + ".txt"), bind(&UsersBeginEndPositionsGenerator::GetUrllcUsersEndPositions, generator, placeholders::_1));
   return 0;
 }
