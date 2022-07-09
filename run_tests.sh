@@ -7,3 +7,4 @@ cd ./build
 ./Parser_test
 ./Vector3Int_test
 ./generate_base_stations_positions_test
+./UsersBeginEndPositionsGenerator_test

@@ -40,8 +40,17 @@ target_link_libraries(
   generate_base_stations_positions_test
   gtest_main
 )
+add_executable(
+  UsersBeginEndPositionsGenerator_test
+  UsersBeginEndPositionsGenerator_test.cpp
+)
+target_link_libraries(
+  UsersBeginEndPositionsGenerator_test
+  gtest_main
+)
 include(GoogleTest)
 gtest_discover_tests(generate_problem_derived_parameters_test)
 gtest_discover_tests(Parser_test)
 gtest_discover_tests(Vector3Int_test)
 gtest_discover_tests(generate_base_stations_positions_test)
+gtest_discover_tests(UsersBeginEndPositionsGenerator_test)
