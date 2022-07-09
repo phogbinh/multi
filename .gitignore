@@ -33,6 +33,7 @@
 
 bin
 build
+users_positions
 
 *.swp
 
