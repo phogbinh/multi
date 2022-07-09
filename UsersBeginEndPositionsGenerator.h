@@ -1,3 +1,5 @@
+#include "Vector3Int.h"
+
 #define SEED_X 1
 #define SEED_Y 2
 class UsersPositionsGenerator {
