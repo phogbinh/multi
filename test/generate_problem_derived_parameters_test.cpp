@@ -1,7 +1,6 @@
 #include <gtest/gtest.h>
+#include "test.h"
 #include "../generate_problem_derived_parameters.h"
-
-#define DELTA 0.00001
 
 TEST(GenerateProblemDerivedParametersTest, GetSubcarrierSpacingTest) {
   EXPECT_EQ(GetSubcarrierSpacing(2), 60);
