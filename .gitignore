@@ -39,3 +39,4 @@ users_peak_rates
 *.swp
 
 base_stations_positions.txt
+embb_users_multiconnectivity_capabilities.txt
