@@ -16,7 +16,7 @@ struct Parameters {
   int CHANNEL_BANDWIDTH;
   int NUMEROLOGY;
   int SUBCHANNELS_NUM;
-  int TRANSMISSION_POWER;
+  int TRANSMITTED_POWER;
   int THERMAL_NOISE_DENSITY;
   int MINIMUM_X;
   int MAXIMUM_X;
@@ -59,8 +59,8 @@ void getParameter(const string& key, const string& value, Parameters& parameters
   else if (key == "SUBCHANNELS_NUM") {
     parameters.SUBCHANNELS_NUM = stoi(value);
   }
-  else if (key == "TRANSMISSION_POWER") {
-    parameters.TRANSMISSION_POWER = stoi(value);
+  else if (key == "TRANSMITTED_POWER") {
+    parameters.TRANSMITTED_POWER = stoi(value);
   }
   else if (key == "THERMAL_NOISE_DENSITY") {
     parameters.THERMAL_NOISE_DENSITY = stoi(value);

@@ -15,7 +15,7 @@ TEST(ParserTest, GetParametersTest) {
   EXPECT_EQ(parameters.CHANNEL_BANDWIDTH, 40000000);
   EXPECT_EQ(parameters.NUMEROLOGY, 2);
   EXPECT_EQ(parameters.SUBCHANNELS_NUM, 51);
-  EXPECT_EQ(parameters.TRANSMISSION_POWER, 20);
+  EXPECT_EQ(parameters.TRANSMITTED_POWER, 20);
   EXPECT_EQ(parameters.THERMAL_NOISE_DENSITY, -204);
   EXPECT_EQ(parameters.MINIMUM_X, 0);
   EXPECT_EQ(parameters.MAXIMUM_X, 1000);
