@@ -27,7 +27,7 @@ TEST(ParserTest, GetParametersTest) {
 
 TEST(ParserTest, GetUsersPositionsTest) {
   vector<Vector3Int> positions;
-  GetUsersPositions(string(getenv("MULTI_DIR")) + "test/users_positions_mock.txt", positions);
+  GetPositions(string(getenv("MULTI_DIR")) + "test/positions_mock.txt", positions);
   EXPECT_EQ(positions.size(), 3);
   EXPECT_EQ(positions[0].GetX(), 0);
   EXPECT_EQ(positions[0].GetY(), -2147483648);

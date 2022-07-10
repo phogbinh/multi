@@ -108,7 +108,7 @@ void GetParameters(Parameters& parameters) {
 
 // input @ filepath
 // output @ positions
-void GetUsersPositions(const string& filepath, vector<Vector3Int>& positions) {
+void GetPositions(const string& filepath, vector<Vector3Int>& positions) {
   ifstream file;
   file.open(filepath);
   string line;
