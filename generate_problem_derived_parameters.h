@@ -72,14 +72,14 @@ double GetShannonRate(const int subchannelBandwidth, const double receivedPower,
 // input @ subchannelBandwidth[Hz], receivedPower[dB], subchannelThermalNoise[dB], timeSlotDuration[s]
 // output @ [bits/slot]
 int GetTimeSlotPeakRate(const int subchannelBandwidth, const double receivedPower, const int subchannelThermalNoise, const double timeSlotDuration) {
-  double shannonRate = (double)subchannelBandwidth * log2(1.0 + pow(10.0, (receivedPower - (double)subchannelThermalNoise) / 10.0)) * timeSlotDuration;
+  double shannonRate = GetShannonRate(subchannelBandwidth, receivedPower, subchannelThermalNoise) * timeSlotDuration;
   return (int)floor(shannonRate / (double)TIME_SLOT_SYMBOLS_NUM) * TIME_SLOT_SYMBOLS_NUM;
 }
 
 // input @ subchannelBandwidth[Hz], receivedPower[dB], subchannelThermalNoise[dB], timeMinislotDuration[s], timeMinislotsNum
 // output @ [bits/minislot]
 int GetTimeMinislotPeakRate(const int subchannelBandwidth, const double receivedPower, const int subchannelThermalNoise, const double timeMinislotDuration, const int timeMinislotsNum) {
-  double shannonRate = (double)subchannelBandwidth * log2(1.0 + pow(10.0, (receivedPower - (double)subchannelThermalNoise) / 10.0)) * timeMinislotDuration;
+  double shannonRate = GetShannonRate(subchannelBandwidth, receivedPower, subchannelThermalNoise) * timeMinislotDuration;
   int timeMinislotSymbolsNum = TIME_SLOT_SYMBOLS_NUM / timeMinislotsNum;
   return (int)floor(shannonRate / (double)timeMinislotSymbolsNum) * timeMinislotSymbolsNum;
 }
