@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include "test.h"
-#include "../generate_problem_derived_parameters.h"
+#include "../communications.h"
 
 TEST(GenerateProblemDerivedParametersTest, GetSubcarrierSpacingTest) {
   EXPECT_EQ(GetSubcarrierSpacing(2), 60);

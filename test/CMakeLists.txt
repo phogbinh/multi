@@ -9,11 +9,11 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 enable_testing()
 add_executable(
-  generate_problem_derived_parameters_test
-  generate_problem_derived_parameters_test.cpp
+  communications_test
+  communications_test.cpp
 )
 target_link_libraries(
-  generate_problem_derived_parameters_test
+  communications_test
   gtest_main
 )
 add_executable(
@@ -49,7 +49,7 @@ target_link_libraries(
   gtest_main
 )
 include(GoogleTest)
-gtest_discover_tests(generate_problem_derived_parameters_test)
+gtest_discover_tests(communications_test)
 gtest_discover_tests(Parser_test)
 gtest_discover_tests(Vector3Int_test)
 gtest_discover_tests(generate_base_stations_positions_test)
