@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include "Vector3Int.h"
 
 using namespace std;
 
@@ -99,6 +100,27 @@ void GetParameters(Parameters& parameters) {
     string value = line.substr(startIdx, endIdx - startIdx); // [startIdx, endIdx)
     string key = line.substr(0, startIdx - 1); // [0, startIdx)
     getParameter(key, value, parameters);
+  }
+  file.close();
+}
+
+// input @ filepath
+// output @ positions
+void GetUsersPositions(const string& filepath, vector<Vector3Int>& positions) {
+  ifstream file;
+  file.open(filepath);
+  string line;
+  while (getline(file, line)) {
+    vector<int> position;
+    stringstream stream(line);
+    int value = -1;
+    while (stream >> value) {
+      position.push_back(value);
+      if (stream.peek() == ',') {
+        stream.ignore();
+      }
+    }
+    positions.push_back(Vector3Int(position[0], position[1], position[2]));
   }
   file.close();
 }

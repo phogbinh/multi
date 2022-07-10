@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "../parser.h"
+#include "../Vector3Int.h"
 
 TEST(ParserTest, GetParametersTest) {
   Parameters parameters;
@@ -22,4 +23,19 @@ TEST(ParserTest, GetParametersTest) {
   EXPECT_EQ(parameters.MAXIMUM_Y, 1000);
   EXPECT_EQ(parameters.BASE_STATION_Z, 100);
   EXPECT_EQ(parameters.USER_Z, 0);
+}
+
+TEST(ParserTest, GetUsersPositionsTest) {
+  vector<Vector3Int> positions;
+  GetUsersPositions(string(getenv("MULTI_DIR")) + "test/users_positions_mock.txt", positions);
+  EXPECT_EQ(positions.size(), 3);
+  EXPECT_EQ(positions[0].GetX(), 0);
+  EXPECT_EQ(positions[0].GetY(), -2147483648);
+  EXPECT_EQ(positions[0].GetZ(), 2147483647);
+  EXPECT_EQ(positions[1].GetX(), 1);
+  EXPECT_EQ(positions[1].GetY(), 1);
+  EXPECT_EQ(positions[1].GetZ(), 1);
+  EXPECT_EQ(positions[2].GetX(), 2);
+  EXPECT_EQ(positions[2].GetY(), 3);
+  EXPECT_EQ(positions[2].GetZ(), 4);
 }
