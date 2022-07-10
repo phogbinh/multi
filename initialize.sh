@@ -11,3 +11,4 @@ $MATLAB_DIR/matlab -batch "run ./ml/generate_users_positions.m"
 rm -r ./users_peak_rates
 mkdir ./users_peak_rates
 g++ generate_users_peak_rates.cpp -o ./bin/generate_users_peak_rates && ./bin/generate_users_peak_rates
+g++ generate_embb_users_multiconnectivity_capabilities.cpp -o ./bin/generate_embb_users_multiconnectivity_capabilities && ./bin/generate_embb_users_multiconnectivity_capabilities
