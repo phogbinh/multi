@@ -63,6 +63,12 @@ int GetSubchannelThermalNoise(const int thermalNoiseDensity, const int subchanne
   return (int)(10.0 * log10(pow(10.0, (double)thermalNoiseDensity / 10.0) * (double)subchannelBandwidth));
 }
 
+// input @ subchannelBandwidth[Hz], receivedPower[dB], subchannelThermalNoise[dB]
+// output @ [bits/s]
+double GetShannonRate(const int subchannelBandwidth, const double receivedPower, const int subchannelThermalNoise) {
+  return (double)subchannelBandwidth * log2(1.0 + pow(10.0, (receivedPower - (double)subchannelThermalNoise) / 10.0));
+}
+
 // input @ subchannelBandwidth[Hz], receivedPower[dB], subchannelThermalNoise[dB], timeSlotDuration[s]
 // output @ [bits/slot]
 int GetTimeSlotPeakRate(const int subchannelBandwidth, const double receivedPower, const int subchannelThermalNoise, const double timeSlotDuration) {
