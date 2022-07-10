@@ -21,6 +21,6 @@ TEST(GenerateProblemDerivedParametersTest, GetTimeMinislotDurationTest) {
 }
 
 TEST(GenerateProblemDerivedParametersTest, GetSubchannelFrequencyTest) {
-  EXPECT_NEAR(GetSubchannelFrequency(28, 0, 720000), 28.0, DELTA);
-  EXPECT_NEAR(GetSubchannelFrequency(28, 50, 720000), 28.036, DELTA);
+  EXPECT_EQ(GetSubchannelFrequency(28000000000, 0, 720000), 28000000000);
+  EXPECT_EQ(GetSubchannelFrequency(28000000000, 50, 720000), 28036000000);
 }

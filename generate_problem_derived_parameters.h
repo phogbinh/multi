@@ -24,8 +24,8 @@ double GetTimeMinislotDuration(const double timeSlotDuration, const int timeMini
   return timeSlotDuration / (double)timeMinislotsNum;
 }
 
-// input @ baseFrequency[GHz], subchannelIdx, subchannelBandwidth[Hz]
-// output @ [GHz]
-double GetSubchannelFrequency(const int baseFrequency, const size_t subchannelIdx, const int subchannelBandwidth) {
-  return (double)baseFrequency + (double)subchannelIdx * 1E-9 * (double)subchannelBandwidth;
+// input @ baseFrequency[Hz], subchannelIdx, subchannelBandwidth[Hz]
+// output @ [Hz]
+long long int GetSubchannelFrequency(const long long int baseFrequency, const size_t subchannelIdx, const int subchannelBandwidth) {
+  return baseFrequency + (long long int)subchannelIdx * (long long int)subchannelBandwidth;
 }
