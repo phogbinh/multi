@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../Parser.h"
+#include "../parser.h"
 #include <bits/stdc++.h>
 #include "../Vector3Int.h"
 #include "../UsersBeginEndPositionsGenerator.h"
@@ -7,9 +7,8 @@
 class UsersBeginEndPositionsGeneratorTest : public ::testing::Test {
 protected:
   void SetUp() override {
-    Parser parser;
     Parameters parameters;
-    parser.GetParameters(parameters);
+    GetParameters(parameters);
     _generatorPtr = new UsersBeginEndPositionsGenerator(parameters.EMBB_USERS_NUM, parameters.URLLC_USERS_NUM, parameters.MINIMUM_X, parameters.MAXIMUM_X, parameters.MINIMUM_Y, parameters.MAXIMUM_Y, parameters.USER_Z);
   }
 

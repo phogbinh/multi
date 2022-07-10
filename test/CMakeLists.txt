@@ -17,11 +17,11 @@ target_link_libraries(
   gtest_main
 )
 add_executable(
-  Parser_test
-  Parser_test.cpp
+  parser_test
+  parser_test.cpp
 )
 target_link_libraries(
-  Parser_test
+  parser_test
   gtest_main
 )
 add_executable(
@@ -50,7 +50,7 @@ target_link_libraries(
 )
 include(GoogleTest)
 gtest_discover_tests(communications_test)
-gtest_discover_tests(Parser_test)
+gtest_discover_tests(parser_test)
 gtest_discover_tests(Vector3Int_test)
 gtest_discover_tests(generate_base_stations_positions_test)
 gtest_discover_tests(UsersBeginEndPositionsGenerator_test)

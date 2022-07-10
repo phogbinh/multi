@@ -1,14 +1,13 @@
 #include <bits/stdc++.h>
 #include "Vector3Int.h"
-#include "Parser.h"
+#include "parser.h"
 
 using namespace std;
 
 // output @ positions
 void GetBaseStationsPositions(vector<Vector3Int>& positions) {
-  Parser parser;
   Parameters parameters;
-  parser.GetParameters(parameters);
+  GetParameters(parameters);
   ifstream file;
   file.open(string(getenv("MULTI_DIR")).append("base_stations_2d_positions.txt"));
   positions.resize(parameters.BASE_STATIONS_NUM);

@@ -1,10 +1,9 @@
 #include <gtest/gtest.h>
-#include "../Parser.h"
+#include "../parser.h"
 
 TEST(ParserTest, GetParametersTest) {
-  Parser parser;
   Parameters parameters;
-  parser.GetParameters(parameters);
+  GetParameters(parameters);
   EXPECT_EQ(parameters.BASE_FREQUENCY, 28000000000);
   EXPECT_EQ(parameters.TIME_SLOTS_NUM, 200);
   EXPECT_EQ(parameters.TIME_MINISLOTS_NUM, 7);
