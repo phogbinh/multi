@@ -44,3 +44,9 @@ TEST(GenerateProblemDerivedParametersTest, GetTimeSlotPeakRateTest) {
   EXPECT_EQ(peakRate % TIME_SLOT_SYMBOLS_NUM, 0);
   EXPECT_EQ(peakRate, 3864);
 }
+
+TEST(GenerateProblemDerivedParametersTest, GetTimeMinislotPeakRateTest) {
+  int peakRate = GetTimeMinislotPeakRate(720000, -80.0, -145, 1E-3 / 28.0, 7);
+  EXPECT_EQ(peakRate % (TIME_SLOT_SYMBOLS_NUM / 7), 0); // 24 symbols
+  EXPECT_EQ(peakRate, 552);
+}
