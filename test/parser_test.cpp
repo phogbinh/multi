@@ -23,6 +23,8 @@ TEST(ParserTest, GetParametersTest) {
   EXPECT_EQ(parameters.MAXIMUM_Y, 1000);
   EXPECT_EQ(parameters.BASE_STATION_Z, 100);
   EXPECT_EQ(parameters.USER_Z, 0);
+  EXPECT_EQ(parameters.MINIMUM_EMBB_USER_MULTICONNECTIVITY_CAPABILITY, 1);
+  EXPECT_EQ(parameters.MAXIMUM_EMBB_USER_MULTICONNECTIVITY_CAPABILITY, 5);
 }
 
 TEST(ParserTest, GetUsersPositionsTest) {
