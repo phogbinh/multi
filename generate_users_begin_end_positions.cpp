@@ -1,14 +1,13 @@
 #include <bits/stdc++.h>
-#include "Parser.h"
+#include "parser.h"
 #include "UsersBeginEndPositionsGenerator.h"
 #include "Vector3Int.h"
 
 using namespace std;
 
 int main() {
-  Parser parser;
   Parameters parameters;
-  parser.GetParameters(parameters);
+  GetParameters(parameters);
   UsersBeginEndPositionsGenerator generator(parameters.EMBB_USERS_NUM, parameters.URLLC_USERS_NUM, parameters.MINIMUM_X, parameters.MAXIMUM_X, parameters.MINIMUM_Y, parameters.MAXIMUM_Y, parameters.USER_Z);
   auto generate_users_positions = [](const string filename, function<void(vector<Vector3Int>&)> GetPositions) {
     ofstream file;
