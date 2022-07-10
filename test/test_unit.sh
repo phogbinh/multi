@@ -8,3 +8,4 @@ cd ./build
 ./Vector3Int_test
 ./generate_base_stations_positions_test
 ./UsersBeginEndPositionsGenerator_test
+./EmbbUsersMulticonnectivityCapabilitiesGenerator_test

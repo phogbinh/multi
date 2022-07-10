@@ -48,9 +48,18 @@ target_link_libraries(
   UsersBeginEndPositionsGenerator_test
   gtest_main
 )
+add_executable(
+  EmbbUsersMulticonnectivityCapabilitiesGenerator_test
+  EmbbUsersMulticonnectivityCapabilitiesGenerator_test.cpp
+)
+target_link_libraries(
+  EmbbUsersMulticonnectivityCapabilitiesGenerator_test
+  gtest_main
+)
 include(GoogleTest)
 gtest_discover_tests(communications_test)
 gtest_discover_tests(parser_test)
 gtest_discover_tests(Vector3Int_test)
 gtest_discover_tests(generate_base_stations_positions_test)
 gtest_discover_tests(UsersBeginEndPositionsGenerator_test)
+gtest_discover_tests(EmbbUsersMulticonnectivityCapabilitiesGenerator_test)
