@@ -1,4 +1,4 @@
-function parameters = get_parameters()
+function parameters = get_parameters() % TODO test
   parameters = Parameters;
   file_id = fopen(getenv("MULTI_DIR") + "problem_parameters.txt", "rt");
   while ~feof(file_id)
