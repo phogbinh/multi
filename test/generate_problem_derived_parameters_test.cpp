@@ -38,3 +38,9 @@ TEST(GenerateProblemDerivedParametersTest, GetReceivedPowerTest) {
 TEST(GenerateProblemDerivedParametersTest, GetSubchannelThermalNoiseTest) {
   EXPECT_EQ(GetSubchannelThermalNoise(-204, 720000), -145);
 }
+
+TEST(GenerateProblemDerivedParametersTest, GetTimeSlotPeakRateTest) {
+  int peakRate = GetTimeSlotPeakRate(720000, -80.0, -145, 0.00025);
+  EXPECT_EQ(peakRate % TIME_SLOT_SYMBOLS_NUM, 0);
+  EXPECT_EQ(peakRate, 3864);
+}

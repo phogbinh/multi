@@ -7,6 +7,7 @@ using namespace std;
 #define LIGHT_SPEED 3E8 // [m/s]
 #define PATH_LOSS_EXPONENT 2.0
 #define SHADOWING_STANDARD_DEVIATION 4.6 // [dB]
+#define TIME_SLOT_SYMBOLS_NUM 168 // 12 subcarriers * 14 symbols
 
 // input @ numerology
 // output @ [kHz]
@@ -60,4 +61,11 @@ double GetReceivedPower(const int transmittedPower, const double pathLossShadowi
 // output @ [dB]
 int GetSubchannelThermalNoise(const int thermalNoiseDensity, const int subchannelBandwidth) {
   return (int)(10.0 * log10(pow(10.0, (double)thermalNoiseDensity / 10.0) * (double)subchannelBandwidth));
+}
+
+// input @ subchannelBandwidth[Hz], receivedPower[dB], subchannelThermalNoise[dB], timeSlotDuration[s]
+// output @ [bits/slot]
+int GetTimeSlotPeakRate(const int subchannelBandwidth, const double receivedPower, const int subchannelThermalNoise, const double timeSlotDuration) {
+  double shannonRate = (double)subchannelBandwidth * log2(1.0 + pow(10.0, (receivedPower - (double)subchannelThermalNoise) / 10.0)) * timeSlotDuration;
+  return (int)floor(shannonRate / (double)TIME_SLOT_SYMBOLS_NUM) * TIME_SLOT_SYMBOLS_NUM;
 }
