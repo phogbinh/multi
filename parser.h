@@ -3,6 +3,8 @@
 
 using namespace std;
 
+#define USERS_POSITIONS_DIR "users_positions/"
+
 struct Parameters {
   long long int BASE_FREQUENCY;
   int TIME_SLOTS_NUM;
@@ -123,4 +125,18 @@ void GetUsersPositions(const string& filepath, vector<Vector3Int>& positions) {
     positions.push_back(Vector3Int(position[0], position[1], position[2]));
   }
   file.close();
+}
+
+// TODO test
+// input @ timeSlotIdx
+// output @
+string GetEmbbUsersPositionsFilepath(const size_t timeSlotIdx) {
+  return string(getenv("MULTI_DIR")) + USERS_POSITIONS_DIR + "embb-" + to_string(timeSlotIdx) + ".txt";
+}
+
+// TODO test
+// input @ timeSlotIndex, timeMinislotIdx
+// output @
+string GetUrllcUsersPositionsFilepath(const size_t timeSlotIdx, const size_t timeMinislotIdx) {
+  return string(getenv("MULTI_DIR")) + USERS_POSITIONS_DIR + "urllc-" + to_string(timeSlotIdx) + "-" + to_string(timeMinislotIdx) + ".txt";
 }
