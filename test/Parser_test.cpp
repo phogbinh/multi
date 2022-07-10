@@ -5,7 +5,7 @@ TEST(ParserTest, GetParametersTest) {
   Parser parser;
   Parameters parameters;
   parser.GetParameters(parameters);
-  EXPECT_EQ(parameters.BASE_FREQUENCY, 28);
+  EXPECT_EQ(parameters.BASE_FREQUENCY, 28000000000);
   EXPECT_EQ(parameters.TIME_SLOTS_NUM, 200);
   EXPECT_EQ(parameters.TIME_MINISLOTS_NUM, 7);
   EXPECT_EQ(parameters.BASE_STATIONS_NUM, 3);

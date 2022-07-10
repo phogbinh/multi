@@ -3,7 +3,7 @@
 using namespace std;
 
 struct Parameters {
-  int BASE_FREQUENCY;
+  long long int BASE_FREQUENCY;
   int TIME_SLOTS_NUM;
   int TIME_MINISLOTS_NUM;
   int BASE_STATIONS_NUM;
@@ -38,67 +38,67 @@ public:
       }
       string value = line.substr(startIdx, endIdx - startIdx); // [startIdx, endIdx)
       string key = line.substr(0, startIdx - 1); // [0, startIdx)
-      getParameter(key, stoi(value), parameters);
+      getParameter(key, value, parameters);
     }
     file.close();
   }
 private:
   // get exactly one field of parameters
   // output @ parameters
-  void getParameter(const string& key, const int value, Parameters& parameters) {
+  void getParameter(const string& key, const string& value, Parameters& parameters) {
     if (key == "BASE_FREQUENCY") {
-      parameters.BASE_FREQUENCY = value;
+      parameters.BASE_FREQUENCY = stoll(value, nullptr, 10);
     }
     else if (key == "TIME_SLOTS_NUM") {
-      parameters.TIME_SLOTS_NUM = value;
+      parameters.TIME_SLOTS_NUM = stoi(value);
     }
     else if (key == "TIME_MINISLOTS_NUM") {
-      parameters.TIME_MINISLOTS_NUM = value;
+      parameters.TIME_MINISLOTS_NUM = stoi(value);
     }
     else if (key == "BASE_STATIONS_NUM") {
-      parameters.BASE_STATIONS_NUM = value;
+      parameters.BASE_STATIONS_NUM = stoi(value);
     }
     else if (key == "EMBB_USERS_NUM") {
-      parameters.EMBB_USERS_NUM = value;
+      parameters.EMBB_USERS_NUM = stoi(value);
     }
     else if (key == "URLLC_USERS_NUM") {
-      parameters.URLLC_USERS_NUM = value;
+      parameters.URLLC_USERS_NUM = stoi(value);
     }
     else if (key == "MAXIMUM_URLLC_DEMAND_RATE") {
-      parameters.MAXIMUM_URLLC_DEMAND_RATE = value;
+      parameters.MAXIMUM_URLLC_DEMAND_RATE = stoi(value);
     }
     else if (key == "CHANNEL_BANDWIDTH") {
-      parameters.CHANNEL_BANDWIDTH = value;
+      parameters.CHANNEL_BANDWIDTH = stoi(value);
     }
     else if (key == "NUMEROLOGY") {
-      parameters.NUMEROLOGY = value;
+      parameters.NUMEROLOGY = stoi(value);
     }
     else if (key == "SUBCHANNELS_NUM") {
-      parameters.SUBCHANNELS_NUM = value;
+      parameters.SUBCHANNELS_NUM = stoi(value);
     }
     else if (key == "TRANSMISSION_POWER") {
-      parameters.TRANSMISSION_POWER = value;
+      parameters.TRANSMISSION_POWER = stoi(value);
     }
     else if (key == "THERMAL_NOISE_DENSITY") {
-      parameters.THERMAL_NOISE_DENSITY = value;
+      parameters.THERMAL_NOISE_DENSITY = stoi(value);
     }
     else if (key == "MINIMUM_X") {
-      parameters.MINIMUM_X = value;
+      parameters.MINIMUM_X = stoi(value);
     }
     else if (key == "MAXIMUM_X") {
-      parameters.MAXIMUM_X = value;
+      parameters.MAXIMUM_X = stoi(value);
     }
     else if (key == "MINIMUM_Y") {
-      parameters.MINIMUM_Y = value;
+      parameters.MINIMUM_Y = stoi(value);
     }
     else if (key == "MAXIMUM_Y") {
-      parameters.MAXIMUM_Y = value;
+      parameters.MAXIMUM_Y = stoi(value);
     }
     else if (key == "BASE_STATION_Z") {
-      parameters.BASE_STATION_Z = value;
+      parameters.BASE_STATION_Z = stoi(value);
     }
     else if (key == "USER_Z") {
-      parameters.USER_Z = value;
+      parameters.USER_Z = stoi(value);
     }
     else {
       // TODO throw exception
