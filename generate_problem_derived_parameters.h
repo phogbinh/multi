@@ -55,3 +55,9 @@ double GetPathLossShadowing(const long long int frequency, const double distance
 double GetReceivedPower(const int transmittedPower, const double pathLossShadowing) {
   return (double)transmittedPower - pathLossShadowing;
 }
+
+// input @ thermalNoiseDensity[dB/Hz], subchannelBandwidth[Hz]
+// output @ [dB]
+int GetSubchannelThermalNoise(const int thermalNoiseDensity, const int subchannelBandwidth) {
+  return (int)(10.0 * log10(pow(10.0, (double)thermalNoiseDensity / 10.0) * (double)subchannelBandwidth));
+}

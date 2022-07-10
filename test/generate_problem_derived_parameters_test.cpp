@@ -34,3 +34,7 @@ TEST(GenerateProblemDerivedParametersTest, GetPathLossShadowingTest) {
 TEST(GenerateProblemDerivedParametersTest, GetReceivedPowerTest) {
   EXPECT_NEAR(GetReceivedPower(20, 100.0), -80.0, DELTA);
 }
+
+TEST(GenerateProblemDerivedParametersTest, GetSubchannelThermalNoiseTest) {
+  EXPECT_EQ(GetSubchannelThermalNoise(-204, 720000), -145);
+}
