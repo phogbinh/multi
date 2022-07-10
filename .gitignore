@@ -34,6 +34,7 @@
 bin
 build
 users_positions
+users_peak_rates
 
 *.swp
 
