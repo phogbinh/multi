@@ -30,3 +30,7 @@ TEST(GenerateProblemDerivedParametersTest, GetPathLossShadowingTest) {
   EXPECT_THROW(double pathLossShadowing = GetPathLossShadowing(23000000, 1.0), std::runtime_error);
   EXPECT_NEAR(GetPathLossShadowing(28000000000, 10.0), 85.98493281, DELTA);
 }
+
+TEST(GenerateProblemDerivedParametersTest, GetReceivedPowerTest) {
+  EXPECT_NEAR(GetReceivedPower(20, 100.0), -80.0, DELTA);
+}

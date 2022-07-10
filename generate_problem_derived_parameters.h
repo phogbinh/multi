@@ -49,3 +49,9 @@ double GetPathLossShadowing(const long long int frequency, const double distance
   }
   return 20.0 * log10(4.0 * M_PI * (double)frequency / LIGHT_SPEED) + 10.0 * PATH_LOSS_EXPONENT * log10(distance) + SHADOWING_STANDARD_DEVIATION;
 }
+
+// input @ transmittedPower[dB], pathLossShadowing[dB]
+// output @ [dB]
+double GetReceivedPower(const int transmittedPower, const double pathLossShadowing) {
+  return (double)transmittedPower - pathLossShadowing;
+}
