@@ -12,3 +12,4 @@ cd ./build
 cd ..
 $MATLAB_DIR/matlab -batch "runtests('get_totally_unimodular_linear_program_e_test')"
 $MATLAB_DIR/matlab -batch "runtests('get_totally_unimodular_linear_program_d_test')"
+$MATLAB_DIR/matlab -batch "runtests('get_totally_unimodular_linear_program_C1_test')"
