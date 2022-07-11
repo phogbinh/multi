@@ -16,3 +16,4 @@ $MATLAB_DIR/matlab -batch "runtests('get_totally_unimodular_linear_program_d_tes
 $MATLAB_DIR/matlab -batch "runtests('get_totally_unimodular_linear_program_C1_test')"
 $MATLAB_DIR/matlab -batch "runtests('get_totally_unimodular_linear_program_C2_test')"
 $MATLAB_DIR/matlab -batch "runtests('get_totally_unimodular_linear_program_C4_test')"
+$MATLAB_DIR/matlab -batch "runtests('get_totally_unimodular_linear_program_C_test')"
