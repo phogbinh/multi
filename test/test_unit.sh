@@ -17,3 +17,4 @@ $MATLAB_DIR/matlab -batch "runtests('get_totally_unimodular_linear_program_C1_te
 $MATLAB_DIR/matlab -batch "runtests('get_totally_unimodular_linear_program_C2_test')"
 $MATLAB_DIR/matlab -batch "runtests('get_totally_unimodular_linear_program_C4_test')"
 $MATLAB_DIR/matlab -batch "runtests('get_totally_unimodular_linear_program_C_test')"
+$MATLAB_DIR/matlab -batch "runtests('get_online_embb_policy_test.m')"
