@@ -9,7 +9,7 @@ EMBB_USERS_MULTICONNECTIVITY_CAPABILITIES = importdata("./ml/embb_users_multicon
 %% GetTotallyUnimodularLinearProgramDTest
 d = get_totally_unimodular_linear_program_d(EMBB_USERS_MULTICONNECTIVITY_CAPABILITIES, EMBB_USERS_NUM, BASE_STATIONS_NUM, SUBCHANNELS_NUM);
 d_actuality = importdata("./ml/d_actuality.txt");
-assert(numel(d), numel(d_actuality));
+assert(isequal(size(d), size(d_actuality)));
 for mli = 1 : numel(d_actuality)
   assert(abs(d(mli) - d_actuality(mli)) <= TOLERANCE);
 end
