@@ -5,8 +5,8 @@
 
 class UsersBeginEndPositionsGenerator {
 public:
-  // input @ embbUsersNum, urllcUsersNum, minX, maxX, minY, maxY, z
-  // output @ _embbUsersBeginPositions, _embbUsersEndPositions, _urllcUsersBeginPositions, _urllcUsersEndPositions
+  // input @ embbUsersNum, urllcUsersNum, minX[m], maxX[m], minY[m], maxY[m], z[m]
+  // output @ _embbUsersBeginPositions[m], _embbUsersEndPositions[m], _urllcUsersBeginPositions[m], _urllcUsersEndPositions[m]
   UsersBeginEndPositionsGenerator(const int embbUsersNum, const int urllcUsersNum, const int minX, const int maxX, const int minY, const int maxY, const int z) {
     default_random_engine engineX(SEED_X);
     default_random_engine engineY(SEED_Y);
@@ -29,19 +29,19 @@ public:
       _urllcUsersEndPositions[i] = Vector3Int(uniformX(engineX), uniformY(engineY), z);
     }
   }
-  // output @ positions
+  // output @ positions[m]
   void GetEmbbUsersBeginPositions(vector<Vector3Int>& positions) {
     positions = _embbUsersBeginPositions;
   }
-  // output @ positions
+  // output @ positions[m]
   void GetEmbbUsersEndPositions(vector<Vector3Int>& positions) {
     positions = _embbUsersEndPositions;
   }
-  // output @ positions
+  // output @ positions[m]
   void GetUrllcUsersBeginPositions(vector<Vector3Int>& positions) {
     positions = _urllcUsersBeginPositions;
   }
-  // output @ positions
+  // output @ positions[m]
   void GetUrllcUsersEndPositions(vector<Vector3Int>& positions) {
     positions = _urllcUsersEndPositions;
   }
