@@ -123,7 +123,7 @@ void GetParameters(Parameters& parameters) {
 }
 
 // input @ filepath
-// output @ positions
+// output @ positions[m]
 void GetPositions(const string& filepath, vector<Vector3Int>& positions) {
   ifstream file;
   file.open(filepath);
