@@ -4,7 +4,7 @@
 
 using namespace std;
 
-// output @ positions
+// output @ positions[m]
 void GetBaseStationsPositions(vector<Vector3Int>& positions) {
   Parameters parameters;
   GetParameters(parameters);
