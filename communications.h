@@ -83,3 +83,19 @@ int GetTimeMinislotPeakRate(const int subchannelBandwidth, const double received
   int timeMinislotSymbolsNum = TIME_SLOT_SYMBOLS_NUM / timeMinislotsNum;
   return (int)floor(shannonRate / (double)timeMinislotSymbolsNum) * timeMinislotSymbolsNum;
 }
+
+// input @ subchannelBandwidth[Hz], transmittedPower[dB], subchannelFrequencies[Hz], distance[m], subchannelThermalNoise[dB], timeMinislotDuration[s], timeMinislotsNum
+// output @ [bits/minislot]
+int GetUrllcUserBaseStationTimeMinislotPeakRate(const int subchannelBandwidth,
+                                                const int transmittedPower,
+                                                const vector<long long int>& subchannelFrequencies,
+                                                const double distance,
+                                                const int subchannelThermalNoise,
+                                                const double timeMinislotDuration,
+                                                const int timeMinislotsNum) {
+  int result = INT_MAX;
+  for (long long int subchannelFrequency : subchannelFrequencies) {
+    result = min(result, GetTimeMinislotPeakRate(subchannelBandwidth, GetReceivedPower(transmittedPower, GetPathLossShadowing(subchannelFrequency, distance)), subchannelThermalNoise, timeMinislotDuration, timeMinislotsNum));
+  }
+  return result;
+}

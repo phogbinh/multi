@@ -58,3 +58,7 @@ TEST(CommunicationsTest, GetTimeMinislotPeakRateTest) {
 TEST(CommunicationsTest, GetTimeSlotPeakRateEqualToTimeMinislotNumMultipleOfGetTimeMinislotPeakRateTest) {
   EXPECT_EQ(GetTimeSlotPeakRate(720000, -100.0, -145, 0.00025), 7 * GetTimeMinislotPeakRate(720000, -100.0, -145, 1E-3 / 28.0, 7));
 }
+
+TEST(CommunicationsTest, GetUrllcUserBaseStationTimeMinislotPeakRateTest) {
+  EXPECT_EQ(GetUrllcUserBaseStationTimeMinislotPeakRate(720000, 20, {28000000000, 28000060000, 28000120000}, 10.0, -145, 1E-3 / 28.0, 7), 672);
+}
