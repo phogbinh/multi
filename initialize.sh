@@ -12,3 +12,6 @@ rm -r ./users_peak_rates
 mkdir ./users_peak_rates
 g++ generate_users_peak_rates.cpp -o ./bin/generate_users_peak_rates && ./bin/generate_users_peak_rates
 g++ generate_embb_users_multiconnectivity_capabilities.cpp -o ./bin/generate_embb_users_multiconnectivity_capabilities && ./bin/generate_embb_users_multiconnectivity_capabilities
+rm -r ./urllc_users_demands
+mkdir ./urllc_users_demands
+g++ generate_urllc_users_demands.cpp -o ./bin/generate_urllc_users_demands && ./bin/generate_urllc_users_demands
