@@ -19,9 +19,9 @@ int main() {
     file.open(string(getenv("MULTI_DIR")) + "users_peak_rates/embb-" + to_string(timeSlotIdx) + ".txt");
     for (size_t embbUserIdx = 0; embbUserIdx < parameters.EMBB_USERS_NUM; ++embbUserIdx) {
       for (size_t baseStationIdx = 0; baseStationIdx < parameters.BASE_STATIONS_NUM; ++baseStationIdx) {
+        const double DISTANCE = baseStationsPositions[baseStationIdx].GetDistanceTo(positions[embbUserIdx]); // downlink direction
         for (size_t subchannelIdx = 0; subchannelIdx < parameters.SUBCHANNELS_NUM; ++subchannelIdx) {
           const long long int SUBCHANNEL_FREQUENCY = GetSubchannelFrequency(parameters.BASE_FREQUENCY, subchannelIdx, SUBCHANNEL_BANDWIDTH);
-          const double DISTANCE = baseStationsPositions[baseStationIdx].GetDistanceTo(positions[embbUserIdx]); // downlink direction
           const double PATH_LOSS_SHADOWING = GetPathLossShadowing(SUBCHANNEL_FREQUENCY, DISTANCE);
           const double RECEIVED_POWER = GetReceivedPower(parameters.TRANSMITTED_POWER, PATH_LOSS_SHADOWING);
           file << GetTimeSlotPeakRate(SUBCHANNEL_BANDWIDTH, RECEIVED_POWER, SUBCHANNEL_THERMAL_NOISE, TIME_SLOT_DURATION) << endl;
