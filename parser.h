@@ -26,6 +26,8 @@ struct Parameters {
   int USER_Z;
   int MINIMUM_EMBB_USER_MULTICONNECTIVITY_CAPABILITY;
   int MAXIMUM_EMBB_USER_MULTICONNECTIVITY_CAPABILITY;
+  int MINIMUM_URLLC_USER_DEMAND;
+  int MAXIMUM_URLLC_USER_DEMAND;
 };
 
 // get exactly one field of parameters
@@ -90,6 +92,12 @@ void getParameter(const string& key, const string& value, Parameters& parameters
   }
   else if (key == "MAXIMUM_EMBB_USER_MULTICONNECTIVITY_CAPABILITY") {
     parameters.MAXIMUM_EMBB_USER_MULTICONNECTIVITY_CAPABILITY = stoi(value);
+  }
+  else if (key == "MINIMUM_URLLC_USER_DEMAND") {
+    parameters.MINIMUM_URLLC_USER_DEMAND = stoi(value);
+  }
+  else if (key == "MAXIMUM_URLLC_USER_DEMAND") {
+    parameters.MAXIMUM_URLLC_USER_DEMAND = stoi(value);
   }
   else {
     // TODO throw exception
