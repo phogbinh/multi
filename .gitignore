@@ -35,6 +35,7 @@ bin
 build
 users_positions
 users_peak_rates
+urllc_users_demands
 
 *.swp
 
