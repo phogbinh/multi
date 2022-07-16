@@ -64,6 +64,14 @@ target_link_libraries(
   UrllcUsersDemandsGenerator_test
   gtest_main
 )
+add_executable(
+  ApproximationOUP_test
+  ApproximationOUP_test.cpp
+)
+target_link_libraries(
+  ApproximationOUP_test
+  gtest_main
+)
 include(GoogleTest)
 gtest_discover_tests(communications_test)
 gtest_discover_tests(parser_test)
@@ -72,3 +80,4 @@ gtest_discover_tests(generate_base_stations_positions_test)
 gtest_discover_tests(UsersBeginEndPositionsGenerator_test)
 gtest_discover_tests(EmbbUsersMulticonnectivityCapabilitiesGenerator_test)
 gtest_discover_tests(UrllcUsersDemandsGenerator_test)
+gtest_discover_tests(ApproximationOUP_test)
