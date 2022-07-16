@@ -22,5 +22,15 @@ public:
       delta[urllcUserIdx][linkBaseStationIdx] = 1;
     }
   }
+  // input @ baseStationIdx, urllcUsersDemands[bits/minislot], urllcUsersPeakRates[bits/minislot], delta
+  // output @
+  int GetBaseStationPunctureSubchannelsNum(const size_t baseStationIdx, const vector<int>& urllcUsersDemands, const vector<vector<int>>& urllcUsersPeakRates, const vector<vector<int>>& delta) {
+    int punctureSubchannelsNum = 0;
+    for (size_t urllcUserIdx = 0; urllcUserIdx < urllcUsersDemands.size(); ++urllcUserIdx) {
+      if (delta[urllcUserIdx][baseStationIdx] == 0) continue;
+      punctureSubchannelsNum += (int)ceil((double)urllcUsersDemands[urllcUserIdx] / (double)urllcUsersPeakRates[urllcUserIdx][baseStationIdx]);
+    }
+    return punctureSubchannelsNum;
+  }
 private:
 };

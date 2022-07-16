@@ -14,3 +14,9 @@ TEST(ApproximationOUPTest, GetDeltaTest) {
   EXPECT_EQ(delta[1][1], 0);
   EXPECT_EQ(delta[1][2], 0);
 }
+
+TEST(ApproximationOUPTest, GetBaseStationPunctureSubchannelsNumTest) {
+  ApproximationOUP policymaker;
+  EXPECT_EQ(policymaker.GetBaseStationPunctureSubchannelsNum(0, {5, 0}, {{1, 3, 2}, {10, 10, 0}}, {{0, 1, 0}, {1, 0, 0}}), 0);
+  EXPECT_EQ(policymaker.GetBaseStationPunctureSubchannelsNum(1, {5, 0}, {{1, 3, 2}, {10, 10, 0}}, {{0, 1, 0}, {1, 0, 0}}), 2);
+}
