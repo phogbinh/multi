@@ -68,3 +68,13 @@ TEST(ApproximationOUPTest, GetPunctureCostsTest) {
   EXPECT_NEAR(punctureCosts[1][0], 20.0, DELTA);
   EXPECT_NEAR(punctureCosts[2][0], 0.6, DELTA);
 }
+
+TEST(ApproximationOUPTest, GetBaseStationPunctureSubchannelsTest) {
+  ApproximationOUP policymaker;
+  vector<size_t> punctureSubchannels;
+  policymaker.GetBaseStationPunctureSubchannels(3, {5.0, 0.0, 0.2, 5.0}, punctureSubchannels);
+  EXPECT_EQ(punctureSubchannels.size(), 3);
+  EXPECT_EQ(punctureSubchannels[0], 1);
+  EXPECT_EQ(punctureSubchannels[1], 2);
+  EXPECT_EQ(punctureSubchannels[2], 0);
+}

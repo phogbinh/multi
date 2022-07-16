@@ -46,5 +46,21 @@ public:
       }
     }
   }
+  // input @ baseStationPunctureSubchannelsNum, baseStationPunctureCosts
+  // output @ baseStationPunctureSubchannels
+  void GetBaseStationPunctureSubchannels(const int baseStationPunctureSubchannelsNum, const vector<double>& baseStationPunctureCosts, vector<size_t>& baseStationPunctureSubchannels) {
+    const int SUBCHANNELS_NUM = baseStationPunctureCosts.size();
+    vector<pair<double, size_t>> costIndex(SUBCHANNELS_NUM);
+    for (size_t subchannelIdx = 0; subchannelIdx < SUBCHANNELS_NUM; ++subchannelIdx) {
+      costIndex[subchannelIdx] = {baseStationPunctureCosts[subchannelIdx], subchannelIdx};
+    }
+    sort(costIndex.begin(), costIndex.end(), [](const pair<double, size_t>& a, const pair<double, size_t>& b) {
+      return a.first < b.first || (a.first == b.first && a.second < b.second);
+    });
+    baseStationPunctureSubchannels.resize(baseStationPunctureSubchannelsNum);
+    for (size_t i = 0; i < baseStationPunctureSubchannelsNum; ++i) {
+      baseStationPunctureSubchannels[i] = costIndex[i].second;
+    }
+  }
 private:
 };
