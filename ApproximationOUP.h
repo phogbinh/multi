@@ -27,7 +27,7 @@ public:
   int GetBaseStationPunctureSubchannelsNum(const size_t baseStationIdx, const vector<int>& urllcUsersDemands, const vector<vector<int>>& urllcUsersPeakRates, const vector<vector<int>>& delta) {
     int punctureSubchannelsNum = 0;
     for (size_t urllcUserIdx = 0; urllcUserIdx < urllcUsersDemands.size(); ++urllcUserIdx) {
-      if (delta[urllcUserIdx][baseStationIdx] == 0) continue;
+      if (!delta[urllcUserIdx][baseStationIdx]) continue;
       punctureSubchannelsNum += GetUrllcUserPunctureSubchannelsNum(urllcUsersDemands[urllcUserIdx], urllcUsersPeakRates[urllcUserIdx][baseStationIdx]);
     }
     return punctureSubchannelsNum;
