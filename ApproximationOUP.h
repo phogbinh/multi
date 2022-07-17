@@ -28,7 +28,7 @@ public:
     int punctureSubchannelsNum = 0;
     for (size_t urllcUserIdx = 0; urllcUserIdx < urllcUsersDemands.size(); ++urllcUserIdx) {
       if (delta[urllcUserIdx][baseStationIdx] == 0) continue;
-      punctureSubchannelsNum += (int)ceil((double)urllcUsersDemands[urllcUserIdx] / (double)urllcUsersPeakRates[urllcUserIdx][baseStationIdx]);
+      punctureSubchannelsNum += GetUrllcUserPunctureSubchannelsNum(urllcUsersDemands[urllcUserIdx], urllcUsersPeakRates[urllcUserIdx][baseStationIdx]);
     }
     return punctureSubchannelsNum;
   }
@@ -68,7 +68,7 @@ public:
     punctureUrllcUserSubchannelsNum.clear();
     for (size_t urllcUserIdx = 0; urllcUserIdx < urllcUsersDemands.size(); ++urllcUserIdx) {
       if (!delta[urllcUserIdx][baseStationIdx]) continue;
-      punctureUrllcUserSubchannelsNum[urllcUserIdx] = (int)ceil((double)urllcUsersDemands[urllcUserIdx] / (double)urllcUsersPeakRates[urllcUserIdx][baseStationIdx]);
+      punctureUrllcUserSubchannelsNum[urllcUserIdx] = GetUrllcUserPunctureSubchannelsNum(urllcUsersDemands[urllcUserIdx], urllcUsersPeakRates[urllcUserIdx][baseStationIdx]);
     }
   }
   // input @ urllcUserDemand[bits/minislot], urllcUserPeakRate[bits/minislot]
