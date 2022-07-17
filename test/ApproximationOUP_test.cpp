@@ -178,4 +178,5 @@ TEST(ApproximationOUPTest, GetEmbbUserIndexTest) {
   ApproximationOUP policymaker;
   EXPECT_EQ(policymaker.GetEmbbUserIndex(1, 3, alpha), 1);
   EXPECT_EQ(policymaker.GetEmbbUserIndex(2, 1, alpha), 0);
+  EXPECT_THROW(size_t embbUserIdx = policymaker.GetEmbbUserIndex(0, 0, alpha), std::runtime_error);
 }

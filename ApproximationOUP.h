@@ -112,6 +112,7 @@ public:
         return embbUserIdx;
       }
     }
+    throw runtime_error("(" + to_string(baseStationIdx) + ", " + to_string(subchannelIdx) + ") is not allocated to any eMBB users");
   }
 private:
 };
