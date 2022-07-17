@@ -76,5 +76,18 @@ public:
   size_t GetUrllcUserPunctureSubchannelsNum(const int urllcUserDemand, const int urllcUserPeakRate) {
     return (int)ceil((double)urllcUserDemand / (double)urllcUserPeakRate);
   }
+  // input @ baseStationPunctureSubchannels, baseStationPunctureUrllcUserSubchannelsNum
+  // output @ baseStationPunctureUrllcUserSubchannels
+  void GetBaseStationPunctureUrllcUserSubchannels(const vector<size_t>& baseStationPunctureSubchannels, const unordered_map<size_t, size_t>& baseStationPunctureUrllcUserSubchannelsNum, unordered_map<size_t, vector<size_t>>& baseStationPunctureUrllcUserSubchannels) {
+    size_t idx = 0;
+    for (auto iterator = baseStationPunctureUrllcUserSubchannelsNum.begin(); iterator != baseStationPunctureUrllcUserSubchannelsNum.end(); ++iterator) {
+      size_t punctureSubchannelsNum = iterator->second;
+      baseStationPunctureUrllcUserSubchannels[iterator->first] = vector<size_t>();
+      while (punctureSubchannelsNum--) {
+        baseStationPunctureUrllcUserSubchannels[iterator->first].push_back(baseStationPunctureSubchannels[idx]);
+        ++idx;
+      }
+    }
+  }
 private:
 };
