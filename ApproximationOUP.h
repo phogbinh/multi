@@ -62,5 +62,14 @@ public:
       baseStationPunctureSubchannels[i] = costIndex[i].second;
     }
   }
+  // input @ baseStationIdx, urllcUsersDemands[bits/minislot], urllcUsersPeakRates[bits/minislot], delta
+  // output @ punctureUrllcUserSubchannelsNum
+  void GetBaseStationPunctureUrllcUserSubchannelsNum(const size_t baseStationIdx, const vector<int>& urllcUsersDemands, const vector<vector<int>>& urllcUsersPeakRates, const vector<vector<int>>& delta, unordered_map<size_t, size_t>& punctureUrllcUserSubchannelsNum) {
+    punctureUrllcUserSubchannelsNum.clear();
+    for (size_t urllcUserIdx = 0; urllcUserIdx < urllcUsersDemands.size(); ++urllcUserIdx) {
+      if (!delta[urllcUserIdx][baseStationIdx]) continue;
+      punctureUrllcUserSubchannelsNum[urllcUserIdx] = (int)ceil((double)urllcUsersDemands[urllcUserIdx] / (double)urllcUsersPeakRates[urllcUserIdx][baseStationIdx]);
+    }
+  }
 private:
 };
