@@ -114,11 +114,10 @@ public:
     }
     throw runtime_error("(" + to_string(baseStationIdx) + ", " + to_string(subchannelIdx) + ") is not allocated to any eMBB users");
   }
-#ifdef FIX
   // input @ embbUsersPeakRates[bits/slot], embbUsersMovingAverageRates[bits/slot], alpha, urllcUsersDemands[bits/minislot], urllcUsersPeakRates[bits/minislot]
   // output @ beta, delta
   void GetPolicy(const vector<vector<vector<int>>>& embbUsersPeakRates,
-                 const vector<vector<vector<double>>>& embbUsersMovingAverageRates,
+                 const vector<double>& embbUsersMovingAverageRates,
                  const vector<vector<vector<int>>>& alpha,
                  const vector<int>& urllcUsersDemands,
                  const vector<vector<int>>& urllcUsersPeakRates,
@@ -140,6 +139,5 @@ public:
     }
     GetBeta(urllcUsersDemands.size(), baseStationsPunctureUrllcUserSubchannels, alpha, beta);
   }
-#endif
 private:
 };

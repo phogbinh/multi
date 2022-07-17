@@ -169,18 +169,11 @@ TEST(ApproximationOUPTest, GetEmbbUserIndexTest) {
   EXPECT_THROW(size_t embbUserIdx = policymaker.GetEmbbUserIndex(0, 0, alpha), std::runtime_error);
 }
 
-#ifdef FIX
 TEST(ApproximationOUPTest, GetPolicyTest) {
   vector<vector<vector<int>>> embbUsersPeakRates = {
     {
       {100, 100, 100},
       {1  , 1  , 1  }
-    }
-  };
-  vector<vector<vector<double>>> embbUsersMovingAverageRates = {
-    {
-      {1.0, 1.0, 1.0},
-      {1.0, 1.0, 1.0}
     }
   };
   vector<vector<vector<int>>> alpha = {
@@ -192,7 +185,7 @@ TEST(ApproximationOUPTest, GetPolicyTest) {
   ApproximationOUP policymaker;
   vector<vector<vector<vector<int>>>> beta;
   vector<vector<int>> delta;
-  policymaker.GetPolicy(embbUsersPeakRates, embbUsersMovingAverageRates, alpha, {5}, {{5, 2}}, beta, delta);
+  policymaker.GetPolicy(embbUsersPeakRates, {1.0, 1.0}, alpha, {5}, {{5, 2}}, beta, delta);
   EXPECT_EQ(beta.size(), 1);
   EXPECT_EQ(beta[0].size(), 1);
   EXPECT_EQ(beta[0][0].size(), 2);
@@ -216,4 +209,3 @@ TEST(ApproximationOUPTest, GetPolicyTest) {
   EXPECT_EQ(delta[0][0], 1);
   EXPECT_EQ(delta[0][1], 0);
 }
-#endif
