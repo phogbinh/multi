@@ -112,3 +112,52 @@ TEST(ApproximationOUPTest, GetBaseStationPunctureUrllcUserSubchannelsTest) {
   EXPECT_EQ(punctureUrllcUserSubchannels[2][0], 0);
   EXPECT_EQ(punctureUrllcUserSubchannels[2][1], 23);
 }
+
+TEST(ApproximationOUPTest, GetBetaTest) {
+  vector<unordered_map<size_t, vector<size_t>>> baseStationsPunctureUrllcSubchannels = {
+    {
+      {9, {1, 2}},
+      {0, {}}
+    },
+    {
+      {1, {4, 3, 2, 1, 0}}
+    },
+    {
+      {5, {0}}
+    }
+  };
+  vector<vector<vector<int>>> alpha = {
+    {
+      {0, 0, 1, 1, 1},
+      {1, 1, 1, 1, 1},
+      {0, 0, 0, 0, 0}
+    },
+    {
+      {1, 1, 0, 0, 0},
+      {0, 0, 0, 0, 0},
+      {1, 1, 1, 1, 1}
+    }
+  };
+  ApproximationOUP policymaker;
+  vector<vector<vector<vector<int>>>> beta;
+  policymaker.GetBeta(10, baseStationsPunctureUrllcSubchannels, alpha, beta);
+  for (size_t subchannelIdx = 0; subchannelIdx < 5; ++subchannelIdx) {
+    EXPECT_EQ(beta[1][0][1][subchannelIdx], 1);
+  }
+  EXPECT_EQ(beta[5][1][2][0], 1);
+  EXPECT_EQ(beta[9][1][0][1], 1);
+  EXPECT_EQ(beta[9][0][0][2], 1);
+  size_t nonPunctureSubchannelsNum = 0;
+  for (size_t urllcUserIdx = 0; urllcUserIdx < 10; ++urllcUserIdx) {
+    for (size_t embbUserIdx = 0; embbUserIdx < 2; ++embbUserIdx) {
+      for (size_t baseStationIdx = 0; baseStationIdx < 3; ++baseStationIdx) {
+        for (size_t subchannelIdx = 0; subchannelIdx < 5; ++subchannelIdx) {
+          if (!beta[urllcUserIdx][embbUserIdx][baseStationIdx][subchannelIdx]) {
+            ++nonPunctureSubchannelsNum;
+          }
+        }
+      }
+    }
+  }
+  EXPECT_EQ(nonPunctureSubchannelsNum, 292);
+}

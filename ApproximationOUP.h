@@ -89,5 +89,27 @@ public:
       }
     }
   }
+  // input @ urllcUsersNum, baseStationsPunctureUrllcUserSubchannels, alpha
+  // output @ beta
+  void GetBeta(const int urllcUsersNum, const vector<unordered_map<size_t, vector<size_t>>>& baseStationsPunctureUrllcUserSubchannels, const vector<vector<vector<int>>>& alpha, vector<vector<vector<vector<int>>>>& beta) {
+    const int EMBB_USERS_NUM = alpha.size();
+    const int BASE_STATIONS_NUM = alpha[0].size();
+    const int SUBCHANNELS_NUM = alpha[0][0].size();
+    beta.resize(urllcUsersNum, vector<vector<vector<int>>>(EMBB_USERS_NUM, vector<vector<int>>(BASE_STATIONS_NUM, vector<int>(SUBCHANNELS_NUM))));
+    for (size_t baseStationIdx = 0; baseStationIdx < BASE_STATIONS_NUM; ++baseStationIdx) {
+      for (auto iterator = baseStationsPunctureUrllcUserSubchannels[baseStationIdx].begin(); iterator != baseStationsPunctureUrllcUserSubchannels[baseStationIdx].end(); ++iterator) {
+        for (size_t subchannelIdx : iterator->second) {
+          size_t punctureEmbbUserIdx = 0;
+          for (size_t embbUserIdx = 0; embbUserIdx < EMBB_USERS_NUM; ++embbUserIdx) {
+            if (alpha[embbUserIdx][baseStationIdx][subchannelIdx]) {
+              punctureEmbbUserIdx = embbUserIdx;
+              break;
+            }
+          }
+          beta[iterator->first][punctureEmbbUserIdx][baseStationIdx][subchannelIdx] = 1;
+        }
+      }
+    }
+  }
 private:
 };
