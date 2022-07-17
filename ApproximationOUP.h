@@ -34,14 +34,14 @@ public:
   }
   // input @ embbUsersPeakRates[bits/slot], embbUsersMovingAverageRates[bits/slot], alpha
   // output @
-  void GetPunctureCosts(const vector<vector<vector<int>>>& embbUsersPeakRates, const vector<vector<vector<double>>>& embbUsersMovingAverageRates, const vector<vector<vector<int>>>& alpha, vector<vector<double>>& punctureCosts) {
+  void GetPunctureCosts(const vector<vector<vector<int>>>& embbUsersPeakRates, const vector<double>& embbUsersMovingAverageRates, const vector<vector<vector<int>>>& alpha, vector<vector<double>>& punctureCosts) {
     const size_t BASE_STATIONS_NUM = embbUsersPeakRates[0].size();
     const size_t SUBCHANNELS_NUM = embbUsersPeakRates[0][0].size();
     punctureCosts.resize(BASE_STATIONS_NUM, vector<double>(SUBCHANNELS_NUM));
     for (size_t baseStationIdx = 0; baseStationIdx < BASE_STATIONS_NUM; ++baseStationIdx) {
       for (size_t subchannelIdx = 0; subchannelIdx < SUBCHANNELS_NUM; ++subchannelIdx) {
         for (size_t embbUserIdx = 0; embbUserIdx < embbUsersPeakRates.size(); ++embbUserIdx) {
-          punctureCosts[baseStationIdx][subchannelIdx] += (double)alpha[embbUserIdx][baseStationIdx][subchannelIdx] * (double)embbUsersPeakRates[embbUserIdx][baseStationIdx][subchannelIdx] / embbUsersMovingAverageRates[embbUserIdx][baseStationIdx][subchannelIdx];
+          punctureCosts[baseStationIdx][subchannelIdx] += (double)alpha[embbUserIdx][baseStationIdx][subchannelIdx] * (double)embbUsersPeakRates[embbUserIdx][baseStationIdx][subchannelIdx] / embbUsersMovingAverageRates[embbUserIdx];
         }
       }
     }
@@ -114,6 +114,7 @@ public:
     }
     throw runtime_error("(" + to_string(baseStationIdx) + ", " + to_string(subchannelIdx) + ") is not allocated to any eMBB users");
   }
+#ifdef FIX
   // input @ embbUsersPeakRates[bits/slot], embbUsersMovingAverageRates[bits/slot], alpha, urllcUsersDemands[bits/minislot], urllcUsersPeakRates[bits/minislot]
   // output @ beta, delta
   void GetPolicy(const vector<vector<vector<int>>>& embbUsersPeakRates,
@@ -139,5 +140,6 @@ public:
     }
     GetBeta(urllcUsersDemands.size(), baseStationsPunctureUrllcUserSubchannels, alpha, beta);
   }
+#endif
 private:
 };
