@@ -111,5 +111,14 @@ public:
       }
     }
   }
+  // input @ baseStationIdx, subchannelIdx, alpha
+  // output @
+  size_t GetEmbbUserIndex(const size_t baseStationIdx, const size_t subchannelIdx, const vector<vector<vector<int>>>& alpha) {
+    for (size_t embbUserIdx = 0; embbUserIdx < alpha.size(); ++embbUserIdx) {
+      if (alpha[embbUserIdx][baseStationIdx][subchannelIdx]) {
+        return embbUserIdx;
+      }
+    }
+  }
 private:
 };

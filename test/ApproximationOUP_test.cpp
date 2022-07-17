@@ -161,3 +161,21 @@ TEST(ApproximationOUPTest, GetBetaTest) {
   }
   EXPECT_EQ(nonPunctureSubchannelsNum, 292);
 }
+
+TEST(ApproximationOUPTest, GetEmbbUserIndexTest) {
+  vector<vector<vector<int>>> alpha = {
+    {
+      {0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0},
+      {0, 1, 0, 0, 0}
+    },
+    {
+      {0, 0, 0, 0, 0},
+      {0, 0, 0, 1, 0},
+      {0, 0, 0, 0, 0}
+    }
+  };
+  ApproximationOUP policymaker;
+  EXPECT_EQ(policymaker.GetEmbbUserIndex(1, 3, alpha), 1);
+  EXPECT_EQ(policymaker.GetEmbbUserIndex(2, 1, alpha), 0);
+}
