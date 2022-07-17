@@ -99,14 +99,7 @@ public:
     for (size_t baseStationIdx = 0; baseStationIdx < BASE_STATIONS_NUM; ++baseStationIdx) {
       for (auto iterator = baseStationsPunctureUrllcUserSubchannels[baseStationIdx].begin(); iterator != baseStationsPunctureUrllcUserSubchannels[baseStationIdx].end(); ++iterator) {
         for (size_t subchannelIdx : iterator->second) {
-          size_t punctureEmbbUserIdx = 0;
-          for (size_t embbUserIdx = 0; embbUserIdx < EMBB_USERS_NUM; ++embbUserIdx) {
-            if (alpha[embbUserIdx][baseStationIdx][subchannelIdx]) {
-              punctureEmbbUserIdx = embbUserIdx;
-              break;
-            }
-          }
-          beta[iterator->first][punctureEmbbUserIdx][baseStationIdx][subchannelIdx] = 1;
+          beta[iterator->first][GetEmbbUserIndex(baseStationIdx, subchannelIdx, alpha)][baseStationIdx][subchannelIdx] = 1;
         }
       }
     }
