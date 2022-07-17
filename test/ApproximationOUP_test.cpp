@@ -92,3 +92,11 @@ TEST(ApproximationOUPTest, GetBaseStationPunctureUrllcUserSubchannelsNumTest) {
   policymaker.GetBaseStationPunctureUrllcUserSubchannelsNum(2, {5, 0, 3}, {{0, 2, 0}, {2, 0, 0}, {0, 2, 0}}, {{0, 1, 0}, {1, 0, 0}, {0, 1, 0}}, punctureUrllcUserSubchannelsNum);
   EXPECT_EQ(punctureUrllcUserSubchannelsNum.size(), 0);
 }
+
+TEST(ApproximationOUPTest, GetUrllcUserPunctureSubchannelsNumTest) {
+  ApproximationOUP policymaker;
+  EXPECT_EQ(policymaker.GetUrllcUserPunctureSubchannelsNum(5, 1), 5);
+  EXPECT_EQ(policymaker.GetUrllcUserPunctureSubchannelsNum(5, 2), 3);
+  EXPECT_EQ(policymaker.GetUrllcUserPunctureSubchannelsNum(2, 10), 1);
+  EXPECT_EQ(policymaker.GetUrllcUserPunctureSubchannelsNum(0, 100), 0);
+}

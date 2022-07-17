@@ -71,5 +71,10 @@ public:
       punctureUrllcUserSubchannelsNum[urllcUserIdx] = (int)ceil((double)urllcUsersDemands[urllcUserIdx] / (double)urllcUsersPeakRates[urllcUserIdx][baseStationIdx]);
     }
   }
+  // input @ urllcUserDemand[bits/minislot], urllcUserPeakRate[bits/minislot]
+  // output @
+  size_t GetUrllcUserPunctureSubchannelsNum(const int urllcUserDemand, const int urllcUserPeakRate) {
+    return (int)ceil((double)urllcUserDemand / (double)urllcUserPeakRate);
+  }
 private:
 };
