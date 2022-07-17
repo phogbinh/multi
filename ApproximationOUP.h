@@ -114,5 +114,30 @@ public:
     }
     throw runtime_error("(" + to_string(baseStationIdx) + ", " + to_string(subchannelIdx) + ") is not allocated to any eMBB users");
   }
+  // input @ embbUsersPeakRates[bits/slot], embbUsersMovingAverageRates[bits/slot], alpha, urllcUsersDemands[bits/minislot], urllcUsersPeakRates[bits/minislot]
+  // output @ beta, delta
+  void GetPolicy(const vector<vector<vector<int>>>& embbUsersPeakRates,
+                 const vector<vector<vector<double>>>& embbUsersMovingAverageRates,
+                 const vector<vector<vector<int>>>& alpha,
+                 const vector<int>& urllcUsersDemands,
+                 const vector<vector<int>>& urllcUsersPeakRates,
+                 vector<vector<vector<vector<int>>>>& beta,
+                 vector<vector<int>>& delta) {
+    const int BASE_STATIONS_NUM = embbUsersPeakRates[0].size();
+    vector<vector<double>> punctureCosts;
+    GetPunctureCosts(embbUsersPeakRates, embbUsersMovingAverageRates, alpha, punctureCosts);
+    GetDelta(urllcUsersPeakRates, delta);
+    vector<unordered_map<size_t, vector<size_t>>> baseStationsPunctureUrllcUserSubchannels(BASE_STATIONS_NUM);
+    for (size_t baseStationIdx = 0; baseStationIdx < BASE_STATIONS_NUM; ++baseStationIdx) {
+      vector<size_t> baseStationPunctureSubchannels;
+      GetBaseStationPunctureSubchannels(GetBaseStationPunctureSubchannelsNum(baseStationIdx, urllcUsersDemands, urllcUsersPeakRates, delta), punctureCosts[baseStationIdx], baseStationPunctureSubchannels);
+      unordered_map<size_t, size_t> baseStationPunctureUrllcUserSubchannelsNum;
+      GetBaseStationPunctureUrllcUserSubchannelsNum(baseStationIdx, urllcUsersDemands, urllcUsersPeakRates, delta, baseStationPunctureUrllcUserSubchannelsNum);
+      unordered_map<size_t, vector<size_t>> baseStationPunctureUrllcUserSubchannels;
+      GetBaseStationPunctureUrllcUserSubchannels(baseStationPunctureSubchannels, baseStationPunctureUrllcUserSubchannelsNum, baseStationPunctureUrllcUserSubchannels);
+      baseStationsPunctureUrllcUserSubchannels[baseStationIdx] = baseStationPunctureUrllcUserSubchannels;
+    }
+    GetBeta(urllcUsersDemands.size(), baseStationsPunctureUrllcUserSubchannels, alpha, beta);
+  }
 private:
 };

@@ -180,3 +180,50 @@ TEST(ApproximationOUPTest, GetEmbbUserIndexTest) {
   EXPECT_EQ(policymaker.GetEmbbUserIndex(2, 1, alpha), 0);
   EXPECT_THROW(size_t embbUserIdx = policymaker.GetEmbbUserIndex(0, 0, alpha), std::runtime_error);
 }
+
+TEST(ApproximationOUPTest, GetPolicyTest) {
+  vector<vector<vector<int>>> embbUsersPeakRates = {
+    {
+      {100, 100, 100},
+      {1  , 1  , 1  }
+    }
+  };
+  vector<vector<vector<double>>> embbUsersMovingAverageRates = {
+    {
+      {1.0, 1.0, 1.0},
+      {1.0, 1.0, 1.0}
+    }
+  };
+  vector<vector<vector<int>>> alpha = {
+    {
+      {1, 1, 1},
+      {1, 1, 1}
+    }
+  };
+  ApproximationOUP policymaker;
+  vector<vector<vector<vector<int>>>> beta;
+  vector<vector<int>> delta;
+  policymaker.GetPolicy(embbUsersPeakRates, embbUsersMovingAverageRates, alpha, {5}, {{5, 2}}, beta, delta);
+  EXPECT_EQ(beta.size(), 1);
+  EXPECT_EQ(beta[0].size(), 1);
+  EXPECT_EQ(beta[0][0].size(), 2);
+  EXPECT_EQ(beta[0][0][0].size(), 3);
+  EXPECT_EQ(beta[0][0][0][0], 1);
+  size_t nonPunctureSubchannelsNum = 0;
+  for (size_t urllcUserIdx = 0; urllcUserIdx < 1; ++urllcUserIdx) {
+    for (size_t embbUserIdx = 0; embbUserIdx < 1; ++embbUserIdx) {
+      for (size_t baseStationIdx = 0; baseStationIdx < 2; ++baseStationIdx) {
+        for (size_t subchannelIdx = 0; subchannelIdx < 3; ++subchannelIdx) {
+          if (!beta[urllcUserIdx][embbUserIdx][baseStationIdx][subchannelIdx]) {
+            ++nonPunctureSubchannelsNum;
+          }
+        }
+      }
+    }
+  }
+  EXPECT_EQ(nonPunctureSubchannelsNum, 5);
+  EXPECT_EQ(delta.size(), 1);
+  EXPECT_EQ(delta[0].size(), 2);
+  EXPECT_EQ(delta[0][0], 1);
+  EXPECT_EQ(delta[0][1], 0);
+}
