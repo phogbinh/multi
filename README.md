@@ -32,7 +32,10 @@ embb multiconnectivity, urllc multicell, embb urllc puncturing
 ##### Instruction
 - [Install](http://cvxr.com/cvx/doc/install.html)
 - Move to `~`
-- Execute `vim ~/Documents/MATLAB/startup.m` add `run ~/cvx/cvx_startup.m`
+- Edit `~/Documents/MATLAB/startup.m`
+```
+run ~/cvx/cvx_startup.m
+```
 - Setup MATLAB
 ```
 cvx_solver mosek
