@@ -1,6 +1,8 @@
 # multi
 embb multiconnectivity, urllc multicell, embb urllc puncturing
 ## Installation
+### Operating system
+`Ubuntu 20.04.4 LTS`
 ### Environment variables
 - `MULTI_DIR`
 - `MATLAB_DIR`
